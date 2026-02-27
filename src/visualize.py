@@ -6,6 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--input_path',required=True)
 parser.add_argument('--key',required=True)
 parser.add_argument('--percent',action='store_true')
+parser.add_argument('--output_png',required=True)
 args = parser.parse_args()
 
 # imports
@@ -22,7 +23,23 @@ if args.percent:
     for k in counts[args.key]:
         counts[args.key][k] /= counts['_all'][k]
 
-# print the count values
+# getting the count values
 items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)
+top_10 = []
+top_10_values = []
+i = 0
 for k,v in items:
-    print(k,':',v)
+    top_10.append(k)
+    top_10_values.append(v)
+    i += 1
+    if i == 10:
+        break
+
+#plotting
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+
+ax.bar(top_10, top_10_values, width=1, edgecolor="white", linewidth=0.7)
+plt.savefig(args.output_png)
+
+plt.show()
