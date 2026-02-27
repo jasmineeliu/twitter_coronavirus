@@ -29,17 +29,21 @@ Here are a few example plots you could get by running this program:
 Using `visualize.py`, you can obtain barplots of with the top 10 countries by number of tweets for the given hashtag:
 
 For `#coronavirus`:
+
 ![Barplot showing the Top 10 countries that tweeted #coronavirus in 2020]("./plotoutputs/coronavirus_country.png")
 
 For `#코로나바이러스`:
+
 ![Barplot showing the Top 10 countries that tweeted #코로나바이러스 in 2020]("./plotoutputs/coronavirus_korean_country.png")
 
 We can also group by language:
 
 For `#coronavirus`:
+
 ![Barplot showing the Top 10 languages that tweeted #coronavirus in 2020]("./plotoutputs/coronavirus_lang.png")
 
 For `#코로나바이러스`:
+
 ![Barplot showing the Top 10 languages that tweeted #코로나바이러스 in 2020]("./plotoutputs/coronavirus_korean_lang.png")
 
 
