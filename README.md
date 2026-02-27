@@ -40,7 +40,7 @@ We can also group by language:
 
 For `#coronavirus`:
 
-![Barplot showing the Top 10 languages that tweeted #coronavirus in 2020](./plotoutputs/coronavirus_lang.png)
+![Barplot showing the Top 10 languages that tweeted #coronavirus in 2020](./plotoutputs/coronavirus_language.png)
 
 For `#코로나바이러스`:
 
