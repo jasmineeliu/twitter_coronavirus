@@ -50,8 +50,10 @@ For `#코로나바이러스`:
 Using `alternate_reduce.py`, we can obtain lineplots which demonstrates how usage of hashtags compare between each other and over 2020:
 
 Graph displaying #coronavirus in different languages over 2020:
+
 ![Lineplot showing changes in tweets on coronavirus in 2020](./plotoutputs/different_lang_line_plot.png)
  
 We can also analyze differences in language and how people referred to the coronavirus online and how this changed over the year:
+
 ![Lineplot showing changes in tweets on coronavirus in 2020](./plotoutputs/corona_variations.png)
 
