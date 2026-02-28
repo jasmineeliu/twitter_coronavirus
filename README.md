@@ -21,13 +21,13 @@ Because the dataset contains over 1 billion tweets, this project uses a MapReduc
 
 ## Directory Structure
 `./src` contains all the Python code for this project. It is broken up into several sections:
-- `./src/map.py`,
+- `./src/map.py`
     - Creates a JSON object containing number of tweets associated with specified hashtags, grouped by language and country
     - Acts as the “Map” stage in the MapReduce workflow 
 - `./src/reduce.py`
     - Aggregates hashtag counts from multiple intermediate files into a single combined JSON object
     - Computes yearly totals from daily or chunked results
-- `./src/visualize.py`,
+- `./src/visualize.py`
    - Produces a bar plot of the top 10 countries or languages using a specified hashtag
    - Outputs a `.png` file for comparative geographic or linguistic analysis
 - `./src/alternate_reduce.py`
