@@ -2,25 +2,44 @@
 
 ## Overview
 
-This project scans all geotagged tweets sent in 2020 to monitor the spread of coronavirus on social media. To analyze this dataset of about 1.1 billion tweets, this program uses  Python and the MapReduce procedure allowing users to:
+This project analyzes approximately 1.1 billion geotagged tweets from 2020 to monitor the spread of coronavirus on social media. Using Python and a MapReduce workflow, the program enables users to:
 
--  Extract the total number of tweets associated with chosen hashtags for every day in 2020
-- Reduce found totals to return the total number of tweets associated with chosen hashtags for the whole year in 2020
+-  Extract the daily number of tweets associated with selected hashtags in 2020
+- Reduce daily totals to compute the total number of tweets associated with selected hashtags for the whole year in 2020
 - Group tweets by country or language
 - Visualize these results into bar and line plots
 
-With outputted graphs, this program allows users to critically analyze the spread of corona virus by examining what people were tweeting and where.
+By visualizing hashtag frequency over time and across regions, this project allows users to critically examine how COVID-19 discourse evolved geographically and linguistically throughout 2020.
 
-## File Details
+## Project Architecture
+
+Because the dataset contains over 1 billion tweets, this project uses a MapReduce-style pipeline to efficiently process large-scale data:
+
+1. Map Phase – Extract relevant hashtag data and group by country/language
+2. Reduce Phase – Aggregate hashtag counts across files or time periods
+3. Visualization Phase – Generate plots for interpretation
+
+## Directory Structure
 `./src` contains all the Python code for this project. It is broken up into several sections:
-- `./src/map.py`, which contains the code for creating a JSON object holding all the tweets with a given hashtag, grouped by language and country
-- `./src/reduce.py`, which reduces the given file's counts of hashtags into one larger JSON object 
-- `./src/visualize.py`, which takes in hashtag count data and a hashtag and returns a .png file of a barplot with the top 10 groups and how many tweets that group has with the given hashtag
-- `./src/alternate_reduce.py`, which plots a line plot for the given days in 2020 and hashtags and returns a .png file of a lineplot with the number of tweets that use that hashtag during the time period. 
+- `./src/map.py`,
+    - Creates a JSON object containing number of tweets associated with specified hashtags, grouped by language and country
+    - Acts as the “Map” stage in the MapReduce workflow 
+- `./src/reduce.py`
+    - Aggregates hashtag counts from multiple intermediate files into a single combined JSON object
+    - Computes yearly totals from daily or chunked results
+- `./src/visualize.py`,
+   - Produces a bar plot of the top 10 countries or languages using a specified hashtag
+   - Outputs a `.png` file for comparative geographic or linguistic analysis
+- `./src/alternate_reduce.py`
+    - Partially reduces and aggregates hashtag counts from intermediate files
+    - Generates a line plot showing hashtag usage over time (days in 2020) and outputs a `.png` file
 
 Further, in the main folder we have helper files:
-- `hashtags`, which contains the list of hashtags we are examining
-- `run_maps.sh`, which is a shell script that lets us take all the tweets from 2020 and run our `./src/map.py` code on the data
+- `hashtags`
+    - Plain text file containing the list of tracked hashtags 
+- `run_maps.sh`
+    - Shell script that executes our `./src/map.py` code  across the full 2020 dataset.
+    - Automates batch processing of large tweet files.
 
 ## Example Plots
 
